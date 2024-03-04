@@ -1,0 +1,28 @@
+.App{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 70%;
+  margin: auto;
+}
+
+.currency{
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+}
+
+.currency li{ 
+  border: 1px solid gray;
+  padding: 5px 15px;
+  border-right: none;
+  cursor: pointer;
+  list-style-type: none;
+}
+
+.currency li:last-child{
+  border-right: 1px solid gray;
+
+}
+.currency li:checked{
+  background-color: cornflowerblue;
+}
