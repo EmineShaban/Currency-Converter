@@ -23,6 +23,12 @@
   border-right: 1px solid gray;
 
 }
-.currency li:checked{
+.check{
   background-color: cornflowerblue;
+}
+
+input{
+  width: 250px;
+  height: 40px;
+  font-size: 35px;
 }
