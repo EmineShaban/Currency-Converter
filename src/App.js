@@ -1,12 +1,13 @@
-import './App.css';
 import React from 'react';
+import { Block } from './Block';
 
 function App() {
   const [info, setInfo] = React.useState({});
+  // const [currency, setCurrency] = React.useState("UAN");
+
   const [fromCurrency, setFromCurrency] = React.useState("UAN");
   const [toCurrency, setToCurrency] = React.useState("EUR");
-  
-  const defaultCurrencies = ["UAN", "EUR", "USD", "BGN"]
+
   React.useEffect(() => {
     fetch('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json')
       .then((res) => res.json())
@@ -20,40 +21,23 @@ function App() {
     // .finally(() => setLoading(false))
   }, []);
 
+  const onChangeFromCurrency = (value) => {
+    setFromCurrency(value)
+  }
+  const onChangeToCurrency = (value) => {
+    setToCurrency(value)
+  }
+  
 
+  const onChangeFromValue = (value) => {
+    console.log(value)
+    
+  }
   return (
     <div className="App">
-      <div className='from'>
-        <ul className='currency'>
-          {defaultCurrencies.map((cur) => (
-            <li
-              className={fromCurrency == cur ? "check" : ""}
-              // onClick={() => onChangeCurrency(cur)}
-              key={cur}>{cur}</li>
-          ))}
+      <Block value={0} currency={fromCurrency} onChangeCurrency={onChangeFromCurrency} onChangeValue={onChangeFromValue} />
 
-
-        </ul>
-        <form>
-          <input type='number' />
-        </form>
-      </div>
-      <div className='from'>
-        <ul className='currency'>
-          {defaultCurrencies.map((cur) => (
-            <li
-              className={toCurrency == cur ? "check" : ""}
-
-              onClick={() => onChangeCurrency(cur)}
-              key={cur}>{cur}</li>
-          ))}
-
-
-        </ul>
-        <form>
-          <input type='number' />
-        </form>
-      </div>
+      <Block value={0} currency={toCurrency} onChangeCurrency={onChangeToCurrency} />
 
     </div>
   );
