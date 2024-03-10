@@ -20,7 +20,7 @@ export const Block = ({ value, currency, onChangeValue, onChangeCurrency }) => (
         <form>
             <input
                 onChange={(e) => onChangeValue(e.target.value)}
-                // value={value}
+                value={value}
                 placeholder='0'
                 type='number' />
         </form>
